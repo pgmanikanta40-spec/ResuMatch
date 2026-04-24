@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: resumatch
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn resumatch_backend.wsgi
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_FALLBACK_MODELS
+        value: gemini-2.5-flash-lite,gemini-2.0-flash,gemini-2.0-flash-lite
+      - key: CLOUDANT_URL
+        sync: false
+      - key: CLOUDANT_APIKEY
+        sync: false
+      - key: CLOUDANT_DATABASE
+        value: uploaded_resumes

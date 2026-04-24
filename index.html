@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESUMATCH | Resume Interview Prep</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="home">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="RESUMATCH home">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+      <span>RESUMATCH</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Analyzer</a>
+      <a href="practice.html">Practice Room</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="intro-strip" aria-labelledby="app-title">
+      <div>
+        <p class="eyebrow">Resume to interview practice</p>
+        <h1 id="app-title">Upload your resume, paste a job description, and get targeted questions.</h1>
+      </div>
+      <div class="process-visual" aria-hidden="true">
+        <div class="visual-doc">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="visual-match">
+          <strong>82</strong>
+          <span>match</span>
+        </div>
+        <div class="visual-questions">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="RESUMATCH analyzer">
+      <form class="input-panel" id="analyzerForm">
+        <div class="section-heading">
+          <p class="eyebrow">Step 1</p>
+          <h2>Resume and role details</h2>
+        </div>
+
+        <label class="file-drop" id="dropZone">
+          <input id="resumeFile" type="file" accept=".pdf,.doc,.docx,.txt">
+          <span class="file-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M7 3h7l5 5v13H7z"></path>
+              <path d="M14 3v5h5"></path>
+              <path d="M9.5 13h5M9.5 16h4"></path>
+            </svg>
+          </span>
+          <span>
+            <strong id="fileLabel">Choose resume file</strong>
+            <small>PDF, DOC, DOCX, or TXT</small>
+            <span class="upload-status" id="uploadStatus">No file selected</span>
+            <progress class="upload-progress hidden" id="uploadProgress" max="100" value="0">0%</progress>
+          </span>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Target role</span>
+            <input id="targetRole" type="text" placeholder="Frontend Developer">
+          </label>
+
+          <label>
+            <span>Experience level</span>
+            <select id="experienceLevel">
+              <option>Fresher</option>
+              <option>Junior</option>
+              <option>Mid-level</option>
+              <option>Senior</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>Job description</span>
+          <textarea id="jobDescription" rows="10"
+            placeholder="Paste the job description here. Include tools, responsibilities, required skills, and interview focus areas."></textarea>
+        </label>
+
+        <div class="button-row">
+          <button class="btn primary" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Generate questions
+          </button>
+          <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+        </div>
+      </form>
+
+      <aside class="results-panel" aria-live="polite">
+        <div class="section-heading">
+          <p class="eyebrow">Step 2</p>
+          <h2>AI analysis preview</h2>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-graphic" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p>Your match score, missing skills, and practice questions will appear here.</p>
+        </div>
+
+        <div class="analysis-card hidden" id="analysisCard">
+          <div class="score-row">
+            <div class="score-ring" id="scoreRing">
+              <span id="scoreValue">0%</span>
+            </div>
+            <div>
+              <p class="eyebrow">Estimated fit</p>
+              <h3 id="fitTitle">Ready to review</h3>
+              <p id="fitSummary">RESUMATCH is preparing your interview plan.</p>
+            </div>
+          </div>
+
+          <div class="mini-section">
+            <h3>Detected focus areas</h3>
+            <div class="chip-list" id="skillChips"></div>
+          </div>
+
+          <div class="mini-section">
+            <h3>Practice questions</h3>
+            <ol class="question-list" id="questionPreview"></ol>
+          </div>
+
+          <a class="btn secondary full-width" href="practice.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+            Open practice room
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="assistant-preview" aria-labelledby="assistantPreviewTitle">
+      <div class="assistant-preview-copy">
+        <p class="eyebrow">Watson Assistant</p>
+        <h2 id="assistantPreviewTitle">Live chatbot preview</h2>
+        <p>Ask follow-up questions about interview prep, resume fit, or role expectations without leaving the page.</p>
+      </div>
+
+      <div class="assistant-preview-shell" data-watson-chat-preview>
+        <p class="assistant-preview-status" data-watson-chat-status>Loading Watson Assistant preview...</p>
+        <div class="assistant-preview-root" data-watson-chat-root></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

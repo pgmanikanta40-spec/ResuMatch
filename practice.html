@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Room | RESUMATCH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="practice">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="RESUMATCH home">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+      <span>RESUMATCH</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Analyzer</a>
+      <a href="practice.html" aria-current="page">Practice Room</a>
+    </nav>
+  </header>
+
+  <main class="practice-shell">
+    <section class="practice-summary" aria-label="Current practice session">
+      <p class="eyebrow">Live session</p>
+      <h1>Interview practice room</h1>
+      <p id="sessionIntro">Generate an analysis on the analyzer page to load role specific questions.</p>
+
+      <div class="session-stats">
+        <div>
+          <span id="statScore">--</span>
+          <small>match score</small>
+        </div>
+        <div>
+          <span id="statCount">0</span>
+          <small>questions</small>
+        </div>
+      </div>
+
+      <div class="topic-stack" id="topicStack"></div>
+      <a class="text-link" href="index.html">Update resume details</a>
+    </section>
+
+    <section class="question-stage" aria-label="Practice question">
+      <div class="stage-topline">
+        <span id="questionCounter">Question 1 of 1</span>
+        <span id="questionCategory">General</span>
+      </div>
+
+      <article class="question-card">
+        <h2 id="questionText">Tell me about yourself and the role you are targeting.</h2>
+        <textarea id="answerBox" rows="8" placeholder="Practice your answer here. Keep it concise, specific, and connected to the job description."></textarea>
+
+        <div class="tip-box hidden" id="tipBox">
+          <strong>Answer guide</strong>
+          <p id="tipText"></p>
+        </div>
+      </article>
+
+      <div class="practice-controls">
+        <button class="btn ghost" id="prevQuestion" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 12H5M11 6l-6 6 6 6"></path>
+          </svg>
+          Previous
+        </button>
+        <button class="btn secondary" id="toggleTip" type="button">Show guide</button>
+        <button class="btn primary" id="nextQuestion" type="button">
+          Next
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <section class="assistant-preview assistant-preview-standalone" aria-labelledby="practiceAssistantPreviewTitle">
+    <div class="assistant-preview-copy">
+      <p class="eyebrow">Watson Assistant</p>
+      <h2 id="practiceAssistantPreviewTitle">Chat while you practice</h2>
+      <p>Keep the assistant open beside your mock answers and use it for hints, follow-up questions, or mock interviewer prompts.</p>
+    </div>
+
+    <div class="assistant-preview-shell" data-watson-chat-preview>
+      <p class="assistant-preview-status" data-watson-chat-status>Loading Watson Assistant preview...</p>
+      <div class="assistant-preview-root" data-watson-chat-root></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "ecd74fbe-e97d-4762-a2fc-ed54a4017837", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "1b7c3b6d-06b8-4756-804f-31b10918d720", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+</body>
+</html>

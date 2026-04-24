@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.log
+*.sqlite3
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+db.sqlite3
+.env
+.venv/
+venv/
+resumatch_env/
+.tmp/
+django-server.*.log
