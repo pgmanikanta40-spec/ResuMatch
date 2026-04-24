@@ -1,4 +1,4 @@
-# RESUMATCH
+# ResuMatch
 
 Minimal Django + HTML/CSS/JS app for resume-based interview practice.
 
